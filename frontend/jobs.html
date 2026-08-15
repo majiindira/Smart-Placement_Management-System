@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Jobs | Smart Placement</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="jobs-nav">
+
+        <a href="student-dashboard.html" class="jobs-logo">
+            🎓 Smart <span>Placement</span>
+        </a>
+
+        <nav class="jobs-nav-links">
+
+            <a href="student-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="jobs.html">
+                Jobs
+            </a>
+
+            <a href="applications.html">
+                Applications
+            </a>
+
+            <a href="index.html">
+                Home
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="jobs-page">
+
+        <div class="jobs-title">
+
+            <h1>
+                Find Your Next Opportunity
+            </h1>
+
+            <p>
+                Explore jobs that match your skills and eligibility.
+            </p>
+
+        </div>
+
+
+        <!-- ================= SEARCH ================= -->
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="jobSearch"
+                placeholder="Search job or company..."
+            >
+
+
+            <select id="locationFilter">
+
+                <option value="all">
+                    All Locations
+                </option>
+
+                <option value="Kolkata">
+                    Kolkata
+                </option>
+
+                <option value="Bangalore">
+                    Bangalore
+                </option>
+
+                <option value="Pune">
+                    Pune
+                </option>
+
+            </select>
+
+
+            <select id="jobTypeFilter">
+
+                <option value="all">
+                    All Types
+                </option>
+
+                <option value="Full Time">
+                    Full Time
+                </option>
+
+                <option value="Internship">
+                    Internship
+                </option>
+
+            </select>
+
+
+            <button
+                type="button"
+                class="search-btn"
+                id="searchJobs"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- ================= JOB LIST ================= -->
+
+        <div
+            class="job-list"
+            id="jobList"
+        >
+
+
+            <!-- JOB 1 -->
+
+            <div
+                class="job-card"
+                data-job="software developer"
+                data-company="tech solutions"
+                data-location="Bangalore"
+                data-type="Full Time"
+            >
+
+                <div class="job-card-header">
+
+                    <div class="company-icon">
+                        💻
+                    </div>
+
+                    <span class="eligible-tag">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Software Developer
+                </h2>
+
+
+                <p class="company-name">
+                    Tech Solutions Pvt. Ltd.
+                </p>
+
+
+                <div class="job-details">
+
+                    <span>
+                        📍 Bangalore
+                    </span>
+
+                    <span>
+                        💼 Full Time
+                    </span>
+
+                    <span>
+                        🎓 7.0+ CGPA
+                    </span>
+
+                </div>
+
+
+                <p class="skills">
+                    Required: Java, SQL, HTML, CSS
+                </p>
+
+
+                <div class="job-footer">
+
+                    <span class="salary">
+                        ₹7 LPA
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="apply-btn"
+                        data-job-name="Software Developer"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB 2 -->
+
+            <div
+                class="job-card"
+                data-job="java developer"
+                data-company="code innovations"
+                data-location="Pune"
+                data-type="Full Time"
+            >
+
+                <div class="job-card-header">
+
+                    <div class="company-icon">
+                        ☕
+                    </div>
+
+                    <span class="eligible-tag">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Java Developer
+                </h2>
+
+
+                <p class="company-name">
+                    Code Innovations
+                </p>
+
+
+                <div class="job-details">
+
+                    <span>
+                        📍 Pune
+                    </span>
+
+                    <span>
+                        💼 Full Time
+                    </span>
+
+                    <span>
+                        🎓 7.0+ CGPA
+                    </span>
+
+                </div>
+
+
+                <p class="skills">
+                    Required: Java, Spring Boot, MySQL
+                </p>
+
+
+                <div class="job-footer">
+
+                    <span class="salary">
+                        ₹6 LPA
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="apply-btn"
+                        data-job-name="Java Developer"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB 3 -->
+
+            <div
+                class="job-card"
+                data-job="web developer"
+                data-company="digital edge"
+                data-location="Kolkata"
+                data-type="Internship"
+            >
+
+                <div class="job-card-header">
+
+                    <div class="company-icon">
+                        🌐
+                    </div>
+
+                    <span class="eligible-tag">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Web Developer
+                </h2>
+
+
+                <p class="company-name">
+                    Digital Edge
+                </p>
+
+
+                <div class="job-details">
+
+                    <span>
+                        📍 Kolkata
+                    </span>
+
+                    <span>
+                        💼 Internship
+                    </span>
+
+                    <span>
+                        🎓 6.5+ CGPA
+                    </span>
+
+                </div>
+
+
+                <p class="skills">
+                    Required: HTML, CSS, JavaScript
+                </p>
+
+
+                <div class="job-footer">
+
+                    <span class="salary">
+                        ₹25K/month
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="apply-btn"
+                        data-job-name="Web Developer"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOB 4 -->
+
+            <div
+                class="job-card"
+                data-job="data analyst"
+                data-company="analytics hub"
+                data-location="Kolkata"
+                data-type="Full Time"
+            >
+
+                <div class="job-card-header">
+
+                    <div class="company-icon">
+                        📊
+                    </div>
+
+                    <span class="eligible-tag">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Data Analyst
+                </h2>
+
+
+                <p class="company-name">
+                    Analytics Hub
+                </p>
+
+
+                <div class="job-details">
+
+                    <span>
+                        📍 Kolkata
+                    </span>
+
+                    <span>
+                        💼 Full Time
+                    </span>
+
+                    <span>
+                        🎓 7.0+ CGPA
+                    </span>
+
+                </div>
+
+
+                <p class="skills">
+                    Required: Python, SQL, Excel
+                </p>
+
+
+                <div class="job-footer">
+
+                    <span class="salary">
+                        ₹6.5 LPA
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="apply-btn"
+                        data-job-name="Data Analyst"
+                    >
+                        Apply Now
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- NO RESULT -->
+
+            <div
+                class="no-result"
+                id="noResult"
+            >
+                No matching jobs found.
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ONLY ONE JS FILE FOR THIS PAGE -->
+
+    <script src="./js/jobs.js"></script>
+
+</body>
+
+</html>

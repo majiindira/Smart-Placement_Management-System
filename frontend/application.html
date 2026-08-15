@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | Smart Placement</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <style>
+
+        body {
+            background: #f6f7fb;
+        }
+
+        .application-nav {
+
+            height: 70px;
+
+            padding: 0 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e6e8ef;
+        }
+
+        .application-logo {
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .application-logo span {
+            color: #3f46e8;
+        }
+
+        .application-nav-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .application-nav-links a {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4b5563;
+        }
+
+        .application-nav-links a:hover {
+            color: #3f46e8;
+        }
+
+        .applications-page {
+
+            padding: 40px 5%;
+        }
+
+        .applications-title {
+
+            margin-bottom: 25px;
+        }
+
+        .applications-title h1 {
+
+            font-size: 30px;
+
+            margin-bottom: 7px;
+        }
+
+        .applications-title p {
+
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+        .application-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+
+            background: #ffffff;
+
+            border: 1px solid #e6e8ef;
+
+            border-radius: 10px;
+
+            padding: 18px;
+        }
+
+        .summary-card h2 {
+
+            color: #3f46e8;
+
+            font-size: 24px;
+        }
+
+        .summary-card p {
+
+            color: #6b7280;
+
+            font-size: 11px;
+        }
+
+        .application-table-container {
+
+            background: #ffffff;
+
+            border: 1px solid #e6e8ef;
+
+            border-radius: 12px;
+
+            overflow-x: auto;
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 750px;
+        }
+
+        th,
+        td {
+
+            padding: 16px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #edf0f5;
+
+            font-size: 12px;
+        }
+
+        th {
+
+            background: #f8f9ff;
+
+            color: #4b5563;
+
+            font-size: 11px;
+        }
+
+        td {
+
+            color: #374151;
+        }
+
+        .status {
+
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+        }
+
+        .status-applied {
+
+            background: #e8edff;
+            color: #3f46e8;
+        }
+
+        .status-shortlisted {
+
+            background: #fff3d6;
+            color: #b77900;
+        }
+
+        .status-selected {
+
+            background: #e5f8ec;
+            color: #15803d;
+        }
+
+        .status-rejected {
+
+            background: #feecec;
+            color: #dc2626;
+        }
+
+        .empty-message {
+
+            text-align: center;
+
+            padding: 50px;
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            display: none;
+        }
+
+        @media(max-width: 800px) {
+
+            .application-summary {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .application-nav {
+
+                padding: 0 20px;
+            }
+
+            .application-nav-links {
+
+                display: none;
+            }
+
+            .applications-page {
+
+                padding: 25px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="application-nav">
+
+    <a
+        href="student-dashboard.html"
+        class="application-logo"
+    >
+        🎓 Smart <span>Placement</span>
+    </a>
+
+
+    <nav class="application-nav-links">
+
+        <a href="student-dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="jobs.html">
+            Jobs
+        </a>
+
+        <a href="applications.html">
+            Applications
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="applications-page">
+
+
+    <div class="applications-title">
+
+        <h1>
+            My Applications
+        </h1>
+
+        <p>
+            Track all your job applications in one place.
+        </p>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="application-summary">
+
+        <div class="summary-card">
+
+            <h2 id="totalApplications">
+                0
+            </h2>
+
+            <p>
+                Total Applications
+            </p>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h2 id="appliedCount">
+                0
+            </h2>
+
+            <p>
+                Applied
+            </p>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h2 id="shortlistedCount">
+                0
+            </h2>
+
+            <p>
+                Shortlisted
+            </p>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <h2 id="selectedCount">
+                0
+            </h2>
+
+            <p>
+                Selected
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- TABLE -->
+
+    <div class="application-table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Job
+                    </th>
+
+                    <th>
+                        Applicant
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                    <th>
+                        Status
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="applicationTable">
+
+            </tbody>
+
+        </table>
+
+
+        <div
+            class="empty-message"
+            id="emptyMessage"
+        >
+            You haven't applied to any jobs yet.
+            <br><br>
+
+            <a
+                href="jobs.html"
+                style="color:#3f46e8;font-weight:700;"
+            >
+                Find Jobs
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="./js/script.js"></script>
+
+
+<script>
+
+    const loggedInUser =
+        JSON.parse(
+            localStorage.getItem(
+                "loggedInUser"
+            )
+        );
+
+
+    const applications =
+        JSON.parse(
+            localStorage.getItem(
+                "applications"
+            )
+        ) || [];
+
+
+    const table =
+        document.getElementById(
+            "applicationTable"
+        );
+
+
+    const emptyMessage =
+        document.getElementById(
+            "emptyMessage"
+        );
+
+
+    const userApplications =
+        applications.filter(
+            application =>
+                loggedInUser &&
+                application.email ===
+                loggedInUser.email
+        );
+
+
+    document.getElementById(
+        "totalApplications"
+    ).textContent =
+        userApplications.length;
+
+
+    document.getElementById(
+        "appliedCount"
+    ).textContent =
+        userApplications.filter(
+            item => item.status === "APPLIED"
+        ).length;
+
+
+    document.getElementById(
+        "shortlistedCount"
+    ).textContent =
+        userApplications.filter(
+            item => item.status === "SHORTLISTED"
+        ).length;
+
+
+    document.getElementById(
+        "selectedCount"
+    ).textContent =
+        userApplications.filter(
+            item => item.status === "SELECTED"
+        ).length;
+
+
+    if (userApplications.length === 0) {
+
+        emptyMessage.style.display =
+            "block";
+
+    } else {
+
+        userApplications.forEach(
+            function(application) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                let statusClass =
+                    "status-applied";
+
+
+                if (
+                    application.status ===
+                    "SHORTLISTED"
+                ) {
+
+                    statusClass =
+                        "status-shortlisted";
+
+                }
+
+
+                if (
+                    application.status ===
+                    "SELECTED"
+                ) {
+
+                    statusClass =
+                        "status-selected";
+
+                }
+
+
+                if (
+                    application.status ===
+                    "REJECTED"
+                ) {
+
+                    statusClass =
+                        "status-rejected";
+
+                }
+
+
+                row.innerHTML = `
+
+                    <td>
+                        <strong>
+                            ${application.job}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${application.name}
+                    </td>
+
+                    <td>
+                        ${application.appliedAt}
+                    </td>
+
+                    <td>
+                        <span
+                            class="status ${statusClass}"
+                        >
+                            ${application.status}
+                        </span>
+                    </td>
+
+                `;
+
+
+                table.appendChild(row);
+
+            }
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

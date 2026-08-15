@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | Smart Placement</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+
+    <style>
+        body {
+            background: #f6f7fb;
+        }
+
+        .dashboard-layout {
+            min-height: 100vh;
+        }
+
+        .dashboard-nav {
+            height: 70px;
+            padding: 0 5%;
+            background: #ffffff;
+            border-bottom: 1px solid #e6e8ef;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .dashboard-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #17203a;
+        }
+
+        .dashboard-logo span {
+            color: #3f46e8;
+        }
+
+        .dashboard-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-name {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            border: none;
+            background: #ef4444;
+            color: #ffffff;
+            padding: 9px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .dashboard-content {
+            padding: 40px 5%;
+        }
+
+        .welcome-box {
+            margin-bottom: 30px;
+        }
+
+        .welcome-box h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .welcome-box p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-card {
+            background: #ffffff;
+            border: 1px solid #e6e8ef;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .dashboard-card .icon {
+            width: 40px;
+            height: 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 9px;
+            background: #eef0ff;
+
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h2 {
+            font-size: 28px;
+            color: #3f46e8;
+        }
+
+        .dashboard-card p {
+            color: #6b7280;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 20px;
+        }
+
+        .dashboard-section {
+            background: #ffffff;
+            border: 1px solid #e6e8ef;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-section h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .profile-item {
+            padding: 13px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .profile-item strong {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 4px;
+        }
+
+        .profile-item span {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .job-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .job-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-logo {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #eef0ff;
+            border-radius: 9px;
+        }
+
+        .job-info {
+            flex: 1;
+        }
+
+        .job-info h3 {
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .job-info p {
+            color: #6b7280;
+            font-size: 11px;
+        }
+
+        .job-status {
+            color: #15803d;
+            background: #e5f8ec;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 9px;
+            font-weight: 700;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .quick-link {
+            display: block;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            color: #3038d8;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .quick-link:hover {
+            background: #eef0ff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 900px) {
+
+            .dashboard-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-nav {
+                padding: 0 20px;
+            }
+
+            .dashboard-content {
+                padding: 25px 20px;
+            }
+
+            .job-item {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard-layout">
+
+    <!-- NAVBAR -->
+    <header class="dashboard-nav">
+
+        <a href="index.html" class="dashboard-logo">
+            🎓 Smart <span>Placement</span>
+        </a>
+
+        <div class="dashboard-user">
+
+            <span class="user-name" id="dashboardUser">
+                Student
+            </span>
+
+            <button class="logout-btn" id="logoutBtn">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="dashboard-content">
+
+        <div class="welcome-box">
+
+            <h1>
+                Welcome, <span id="studentName">Student</span> 👋
+            </h1>
+
+            <p>
+                Find opportunities, check eligibility and track your applications.
+            </p>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="dashboard-cards">
+
+            <div class="dashboard-card">
+
+                <div class="icon">💼</div>
+
+                <h2>24</h2>
+                <p>Available Jobs</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="icon">🎯</div>
+
+                <h2>12</h2>
+                <p>Eligible Jobs</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="icon">📋</div>
+
+                <h2 id="applicationCount">0</h2>
+                <p>My Applications</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <div class="icon">📈</div>
+
+                <h2>7.29</h2>
+                <p>Current CGPA</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <!-- PROFILE -->
+            <div>
+
+                <section class="dashboard-section">
+
+                    <h2>My Profile</h2>
+
+                    <div class="profile-item">
+                        <strong>Full Name</strong>
+                        <span id="profileName">-</span>
+                    </div>
+
+                    <div class="profile-item">
+                        <strong>Email</strong>
+                        <span id="profileEmail">-</span>
+                    </div>
+
+                    <div class="profile-item">
+                        <strong>Phone</strong>
+                        <span id="profilePhone">-</span>
+                    </div>
+
+                    <div class="profile-item">
+                        <strong>Role</strong>
+                        <span id="profileRole">Student</span>
+                    </div>
+
+                    <div class="profile-item">
+                        <strong>Skills</strong>
+                        <span>Java, HTML, CSS, JavaScript, SQL</span>
+                    </div>
+
+                </section>
+
+
+                <!-- QUICK LINKS -->
+                <section class="dashboard-section">
+
+                    <h2>Quick Links</h2>
+
+                    <div class="quick-links">
+
+                        <a href="jobs.html" class="quick-link">
+                            🔎 Find Jobs
+                        </a>
+
+                        <a href="applications.html" class="quick-link">
+                            📋 Applications
+                        </a>
+
+                        <a href="#" class="quick-link">
+                            👤 Edit Profile
+                        </a>
+
+                        <a href="#" class="quick-link">
+                            📄 Resume
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- JOBS -->
+            <section class="dashboard-section">
+
+                <h2>Recommended Jobs</h2>
+
+                <div class="job-item">
+
+                    <div class="job-logo">💻</div>
+
+                    <div class="job-info">
+
+                        <h3>Software Developer</h3>
+
+                        <p>
+                            Tech Solutions Pvt. Ltd. • ₹7 LPA
+                        </p>
+
+                    </div>
+
+                    <span class="job-status">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <div class="job-item">
+
+                    <div class="job-logo">☕</div>
+
+                    <div class="job-info">
+
+                        <h3>Java Developer</h3>
+
+                        <p>
+                            Code Innovations • ₹6 LPA
+                        </p>
+
+                    </div>
+
+                    <span class="job-status">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <div class="job-item">
+
+                    <div class="job-logo">🌐</div>
+
+                    <div class="job-info">
+
+                        <h3>Web Developer</h3>
+
+                        <p>
+                            Digital Edge • ₹5 LPA
+                        </p>
+
+                    </div>
+
+                    <span class="job-status">
+                        Eligible
+                    </span>
+
+                </div>
+
+
+                <div class="job-item">
+
+                    <div class="job-logo">📊</div>
+
+                    <div class="job-info">
+
+                        <h3>Data Analyst</h3>
+
+                        <p>
+                            Analytics Hub • ₹6.5 LPA
+                        </p>
+
+                    </div>
+
+                    <span class="job-status">
+                        Eligible
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script src="./js/dashboard.js"></script>
+
+</body>
+
+</html>
